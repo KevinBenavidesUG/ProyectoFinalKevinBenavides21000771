@@ -1,0 +1,143 @@
+// Declaración de variables
+
+var precio_base = 2000
+
+var recargo_por_conjugue = 0
+
+var recargo_por_edad_cliente = 0
+
+var recargo_por_hijo = precio_base*0.2
+
+var recargo_por_propiedad = precio_base*0.35
+
+var cantidad_total_por_recargos = 0
+
+var salario
+
+var total = 0
+
+var salida
+
+//noprotect
+
+// El bucle while reitera el programa mientras el cliente no desee salir (Al final de este se le consulta al cliente si desea salir y el valor se asigna a la variable que se esta evaluando)
+
+while (salida !== "SALIR") {
+
+  
+var nombre_cliente = prompt("Ingrese su nombre, por favor")
+
+var edad_cliente = parseInt(prompt("Ingrese su edad, por favor"))
+
+// Este if evalua si el cliente es mayor de edad, posterior a ello el recargo a aplicar segun la edad que el cliente ingresa
+
+if (edad_cliente <18){
+  
+    alert("Para contratar un seguro, debe ser mayor de edad")
+
+}else {   
+    
+if(edad_cliente>=18 && edad_cliente<=24){
+ 
+    recargo_por_edad_cliente = 0.1*precio_base
+  
+}else if(edad_cliente>=25 && edad_cliente<=49){
+
+    recargo_por_edad_cliente = 0.2*precio_base
+
+}else if(edad_cliente>=50){
+
+    recargo_por_edad_cliente = 0.3*precio_base
+
+}
+
+//Este if determina el recargo a aplicar segun la edad del conyugue del cliente, en caso que ese ultimo posea conyugue
+  
+var conyugue_de_cliente = (prompt("Sí usted posee conyugue, por favor ingrese SI o NO (Sin tildes y Mayusculas)"))
+
+conyugue_de_cliente = conyugue_de_cliente.toUpperCase();
+
+if (conyugue_de_cliente == "SI"){
+  
+    var edad_conyugue = parseInt(prompt("Ingrese la edad de su conyugue, por favor"))
+
+} else {
+ 
+    var edad_conyugue = 0
+  
+} 
+
+
+if(edad_conyugue>=18 && edad_conyugue<=24){
+ 
+    recargo_por_conjugue = 0.1*precio_base
+  
+}else if(edad_conyugue>=25 && edad_conyugue<=49){
+
+    recargo_por_conjugue = 0.2*precio_base
+
+}else if(edad_conyugue>=50){
+
+    recargo_por_conjugue = 0.3*precio_base
+
+}
+
+//Este if determina el recargo a aplicar segun el número de hijos del cliente, en caso que ese ultimo posea hijos
+  
+
+var hijo_de_cliente = (prompt("Sí usted posee hijos, por favor ingrese SI o NO (Sin tildes y Mayusculas)"))
+
+hijo_de_cliente = hijo_de_cliente.toUpperCase();
+
+if (hijo_de_cliente == "SI"){
+  
+    var num_hijos = parseInt(prompt("Ingrese el número de hijos, por favor"))
+
+} else {
+ 
+    var num_hijos = 0
+  
+}
+  
+//Este if determina el recargo a aplicar segun las propiedades del cliente, en caso que ese ultimo posea propiedades
+  
+var propiedad_de_cliente = (prompt("Sí usted posee propiedades, por favor ingrese SI o NO (Sin tildes y Mayusculas)"))
+  
+propiedad_de_cliente = propiedad_de_cliente.toUpperCase();
+
+if (propiedad_de_cliente == "SI"){
+  
+    var num_propiedades = parseInt(prompt("Ingrese el número de propiedades, por favor"))
+
+} else {
+ 
+    var num_propiedades = 0
+  
+}
+  
+//Este if determina el recargo a aplicar segun el salario del cliente
+  
+
+var salario = (prompt("Finalmente ingrese por favor su salario"))
+
+//En las siguientes lineas de código se realizan todos los calculos de recargos y el total a pagar
+
+cantidad_total_por_recargos = recargo_por_edad_cliente + recargo_por_conjugue + num_hijos*recargo_por_hijo + recargo_por_propiedad*num_propiedades + salario*0.05
+
+ 
+total = precio_base + cantidad_total_por_recargos
+
+alert("Estimado "+ nombre_cliente + ", la cantidad adicional a pagar por recargos es: Q" + cantidad_total_por_recargos)
+
+alert("El total a pagar por cotizacion del seguro es: Q" + total)
+
+//Estas lineas de código consultan al cliente si desea continuar o no, esta es la condición de ejecución del while
+
+var salida = (prompt("Sí desea continuar con otra cotización escriba SI, caso contrario escriba SALIR"))
+  
+salida = salida.toUpperCase();
+
+
+}
+
+}
